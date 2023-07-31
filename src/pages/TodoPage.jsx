@@ -112,6 +112,10 @@ const TodoPage = () => {
       });
     });
   };
+
+  const handleDelete = (id) => {
+    setTodos((prevTodos) => prevTodos.filter(todo => todo.id !== id));
+  };
   return (
     <div>
       TodoPage
@@ -127,8 +131,9 @@ const TodoPage = () => {
         onSave={handleSave}
         onToggleDone={handleToggleDone}
         onChangeMode={handleChangeMode}
+        onDelete={handleDelete}
       />
-      <Footer />
+      <Footer leftCount={todos.filter(e => !e.isDone).length} />
     </div>
   );
 };
